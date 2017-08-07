@@ -1,0 +1,4 @@
+
+
+VS = angular.module('VS', [
+]);
