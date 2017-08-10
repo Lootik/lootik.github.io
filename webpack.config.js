@@ -1,6 +1,4 @@
 var path = require("path");
-var webpack = require("webpack");
-
 
 module.exports = {
     cache: true,
@@ -17,9 +15,7 @@ module.exports = {
         loaders: [
             {test: /\.css$/, loader: "style-loader!css-loader"},
             //HTML
-            {test: /\.html$/, loader: "html"},
-            //SASS
-            {test: /\.scss$/, loader: "style!css!sass"}
+            {test: /\.html$/, loader: "html-loader"},
         ]
     }
 };

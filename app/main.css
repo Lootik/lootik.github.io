@@ -1,0 +1,15 @@
+#mask {
+    background: gray;
+    opacity: 0.5;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    z-index: 99999;
+}
+
+#mask p {
+    opacity: 1;   
+    font-size: 40px;
+}

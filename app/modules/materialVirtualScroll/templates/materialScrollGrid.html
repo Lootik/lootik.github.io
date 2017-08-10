@@ -1,0 +1,11 @@
+<md-content layout="column">
+    <md-virtual-repeat-container id="vertical-container">
+        <div md-virtual-repeat="page in $ctrl.dynamicItems" md-on-demand  class="repeated-item" flex layout="row" >
+            <div flex="20"  ng-bind="::page.title"></div>
+            <div flex="20"  ng-bind="::page.type"></div>
+            <div flex="20"  ng-bind="::page.user"></div>
+            <div flex="20"  ng-bind="::page.oldlen"></div>
+            <div flex="20"  ng-bind="::page.newlen"> </div>
+        </div>
+    </md-virtual-repeat-container>
+</md-content>

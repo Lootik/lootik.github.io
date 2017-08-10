@@ -1,0 +1,21 @@
+<md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+    <md-nav-item  ui-sref="main.custom" md-nav-click="goto('custom')" name="main.custom">
+        Custom Implementation
+    </md-nav-item>
+    <md-nav-item   ui-sref="main.material" md-nav-click="goto('material')" name="main.material">
+        Angular Material Implementation
+    </md-nav-item>
+    <div layout="row" layout-align="end center" flex>
+        <md-content>
+            <div>
+                Wikipedia Pages Amount -  {{pagesAmount}}
+            </div>
+        </md-content>  
+
+    </div>
+</md-nav-bar>
+
+<div class="wrapper" ui-view></div>
+<div id="mask"  ng-show="showMask" layout="row" ngMouseover="console.log($rootScope)" layout-align="center center">
+    <p>Loading... <p>
+</div>

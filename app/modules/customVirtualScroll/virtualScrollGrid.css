@@ -1,0 +1,27 @@
+#grid-container{
+    height: 500px;
+    overflow: auto;
+    display: block;
+    border: solid 1px grey;
+}
+#virtul-scroll-grid-container{
+    display: block;
+    width: 100%;
+}
+
+#virtul-scroll-grid-container .virtul-scroll-grid-body {
+    display: block;
+}
+
+#virtul-scroll-grid-container .virtul-scroll-grid-body tr{
+    border-top: 1px solid #ddd;
+}
+
+#virtul-scroll-grid-container .virtul-scroll-grid-body td{
+    border-right: 1px solid #ddd;
+    padding-left: 16px; 
+    border-right: 1px solid #ddd;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
