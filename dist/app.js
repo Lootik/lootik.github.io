@@ -692,7 +692,7 @@
 /***/ (function(module, exports) {
 
 	module.exports = {
-	    WIKI_PAGES_DISPLAY: 10000,
+	    WIKI_PAGES_DISPLAY: 1000,
 	    WIKI_PAGES_FETCH_URL: "https://en.wikipedia.org/w/api.php?action=query&list=recentchanges&rcprop=title%7Cids%7Csizes%7Cflags%7Cuser&rclimit=500&format=json"
 	};
 
@@ -750,15 +750,20 @@
 	                        innerTable: innerTable,
 	                        renderItems: RENDER_ITEMS
 	                    };
-
-	                $scope[modelName] = [];
+	                //set initial values to the model
+	                setModelValue(model.slice(0, config.renderItems));
 	                config.innerTable.css('height', config.wrapperScrollHeight + 'px');
 	                $element.on('scroll', scrollHandler);
 	                calculateScrollPosition($element[0]);
+
 	                function scrollHandler(e) {
 	                    var target = e.target;
 	                    var scrollPosition = calculateScrollPosition(target);
 	                    setScrollPosition(innerTableBody, scrollPosition);
+	                    var itemToShow = culculateItemToShow();
+	                    var indexes = calculateStartandEndIndex(itemToShow);
+	                    var modelsToShow = model.slice(indexes.start, indexes.end);
+	                    setModelValue(modelsToShow);
 	                    $scope.$digest();
 	                }
 	                /*
@@ -767,8 +772,7 @@
 	                 * @returns {number} Amount of wrapper scrolling
 	                 */
 	                function calculateScrollPosition(el) {
-	                    var startIndex,
-	                        endIndex;
+	                    var translateY = null;
 	                    config.scrollConfig = {
 	                        scrollHeight: el.scrollHeight,
 	                        scrollTop: el.scrollTop,
@@ -778,12 +782,7 @@
 	                    config.scrollConfig.scrollPercent = (config.scrollConfig.scrollTop / config.scrollConfig.scrollMaxVal) * 100;
 	                    config.scrollConfig.pixelsPerItem = config.scrollConfig.scrollMaxVal / config.itemsLen; // pixels per one item
 	                    config.scrollConfig.scrollPercentPerItem = (config.scrollConfig.pixelsPerItem / config.scrollConfig.scrollMaxVal) * 100;
-	                    var showItemNumber = Math.round(config.scrollConfig.scrollPercent / config.scrollConfig.scrollPercentPerItem);
-	                    startIndex = showItemNumber;
-	                    endIndex = showItemNumber + config.renderItems;
-	                    var modelsToShow = model.slice(startIndex, endIndex);
-	                    $scope[modelName] = modelsToShow;
-	                    var translateY = null;
+
 	                    if ((config.scrollConfig.scrollTop + innerTableBody[0].clientHeight) >= config.wrapperScrollHeight) {
 	                        translateY = config.wrapperScrollHeight - innerTableBody[0].clientHeight;
 	                    } else {
@@ -791,6 +790,7 @@
 	                    }
 	                    return translateY;
 	                }
+
 	                /*
 	                 *
 	                 * @param {DOM element} el
@@ -799,6 +799,41 @@
 	                 */
 	                function setScrollPosition(el, pos) {
 	                    el.css('transform', 'translateY(' + pos + 'px)');
+	                }
+
+	                /*
+	                 * 
+	                 * @param {number} itemIndex
+	                 * @returns {object} start and end indexes
+	                 */
+
+	                function calculateStartandEndIndex(itemIndex) {
+	                    var start = itemIndex,
+	                        end = itemIndex + config.renderItems;
+	                    if (end >= config.itemsLen) {
+	                        start = config.itemsLen - config.renderItems;
+	                        end = config.itemsLen;
+	                    }
+	                    return {
+	                        start: start,
+	                        end: end
+	                    };
+	                }
+
+	                /* 
+	                 * Calculate model index on scroll position
+	                 * @returns {number} index of item to show
+	                 */
+	                function culculateItemToShow() {
+	                    return Math.round(config.scrollConfig.scrollPercent / config.scrollConfig.scrollPercentPerItem);
+	                }
+
+	                /* Fill model with values
+	                 * @param {array} itemList
+	                 * @returns {undefined}
+	                 */
+	                function setModelValue(itemList) {
+	                    $scope[config.modelName] = itemList;
 	                }
 	            }
 	        };
