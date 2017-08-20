@@ -38,10 +38,10 @@ angular.module('customVirtualScroll', [])
                         lastIndex = indexes.start;
                         var modelsToShow = model.slice(indexes.start, indexes.end);
                         if (config.direction === 'start') {
-                            modelsToShow = model.slice(0, 50);
+                            modelsToShow = model.slice(0, RENDER_ITEMS);
                         }
                         if (config.direction === 'end') {
-                            modelsToShow = model.slice(config.itemsLen - 50, config.itemsLen);
+                            modelsToShow = model.slice(config.itemsLen - RENDER_ITEMS, config.itemsLen);
                         }
                         setScrollPosition(innerTableBody, scrollPosition);
                         setModelValue(modelsToShow);
