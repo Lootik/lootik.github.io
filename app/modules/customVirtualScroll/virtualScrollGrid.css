@@ -9,6 +9,10 @@
     width: 100%;
 }
 
+.virtul-scroll-grid-body td{
+    height: 40px
+}
+
 #virtul-scroll-grid-container .virtul-scroll-grid-body {
     display: block;
 }

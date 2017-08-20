@@ -1,25 +1,25 @@
 {
-    "name": "virtual-repeat",
-    "version": "1.0.0",
-    "description": "",
-    "main": "gilpfile.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "angular": "^1.6.5",
-        "angular-animate": "^1.6.5",
-        "angular-aria": "^1.6.5",
-        "angular-material": "^1.1.4",
-        "angular-ui-router": "^1.0.3",
-        "gulp": "^3.9.1",
-        "gulp-webpack": "^1.5.0",
-        "http-server": "^0.10.0",
-        "css-loader": "^0.28.4",
-        "html-loader": "^0.5.0",
-        "style-loader": "^0.18.2",
-        "webpack": "^3.4.1"
-    }
+  "name": "virtual-repeat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gilpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.5",
+    "angular-animate": "^1.6.5",
+    "angular-aria": "^1.6.5",
+    "angular-material": "^1.1.4",
+    "angular-ui-router": "^1.0.3",
+    "css-loader": "^0.28.4",
+    "gulp": "^3.9.1",
+    "gulp-webpack": "^1.5.0",
+    "html-loader": "^0.5.0",
+    "http-server": "^0.10.0",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.4.1"
+  }
 }
